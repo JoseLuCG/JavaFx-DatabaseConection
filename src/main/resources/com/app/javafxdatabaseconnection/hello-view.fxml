@@ -4,13 +4,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="284.0" prefWidth="584.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.javafxdatabaseconnection.HelloController">
+<AnchorPane fx:id="panel" prefHeight="320.0" prefWidth="244.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.javafxdatabaseconnection.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
-    <Label fx:id="welcomeText" layoutX="52.0" layoutY="33.0" prefHeight="17.0" prefWidth="126.0" text="Introduzca su email" />
-   <TextField layoutX="40.0" layoutY="56.0" />
-   <Label fx:id="welcomeText1" layoutX="52.0" layoutY="89.0" prefHeight="17.0" prefWidth="149.0" text="Introduzca su contraseña" />
-   <TextField layoutX="40.0" layoutY="117.0" />
+   <Label fx:id="welcomeText" layoutX="53.0" layoutY="34.0" prefHeight="17.0" prefWidth="126.0" text="Introduzca su correo:" />
+   <TextField fx:id="emailField" layoutX="41.0" layoutY="58.0" promptText="email" />
+   <Label fx:id="welcomeText1" layoutX="39.0" layoutY="89.0" prefHeight="17.0" prefWidth="149.0" text="Introduzca su contraseña:" />
+   <TextField fx:id="passwordField" layoutX="39.0" layoutY="118.0" promptText="contraseña" />
+   <Button layoutX="90.0" layoutY="159.0" mnemonicParsing="false" onAction="#singInController" text="Entrar" />
+   <Button layoutX="76.0" layoutY="203.0" mnemonicParsing="false" onAction="#newAcountController" text="Registrarse" />
 </AnchorPane>
