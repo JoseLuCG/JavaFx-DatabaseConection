@@ -2,10 +2,18 @@ package com.app.javafxdatabaseconnection;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class HelloController {
+    public Button registro;
     @FXML
     private TextField emailField;
     @FXML
@@ -22,8 +30,21 @@ public class HelloController {
 
     }
 
-    public void newAcountController(ActionEvent actionEvent) {
-        System.out.println("adios");
+    public void newAcountController() {
+       try {
+           FXMLLoader Loader = new FXMLLoader(getClass().getResource("register-view.fxml"));
+           Parent root= Loader.load();
+           Stage nuevaVentana=new Stage();
+           nuevaVentana.setTitle("Hello!");
+           nuevaVentana.setScene(new Scene(root, 300, 400));
+           nuevaVentana.show();
+
+           Stage stage=(Stage) registro.getScene().getWindow();
+           stage.close();
+       }catch (IOException e){
+           System.out.println(e.getMessage());
+       }
+
 
     }
 }
