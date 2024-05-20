@@ -9,11 +9,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
+import static com.dependences.Tools.Functions.*;
+
 public class HelloController {
-    public Button registro;
+    @FXML
+    private Button registro;
+    @FXML
+    private Button enterButton;
     @FXML
     private TextField emailField;
     @FXML
@@ -24,9 +28,26 @@ public class HelloController {
     private Label welcomeText;
 
     public void singInController(ActionEvent actionEvent) {
-        String email = emailField.getText();
-        String newText = email + "Pelele";
-        emailField.setText(newText);
+        boolean userExists = true;
+
+        if (userExists) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-view.fxml"));
+                Parent mainRoot = fxmlLoader.load();
+                Stage mainStage = new Stage();
+                mainStage.setTitle("Ventana Principal");
+                mainStage.setScene(new Scene(mainRoot,400,400));
+                mainStage.show();
+
+                Stage stage = (Stage) enterButton.getScene().getWindow();
+                stage.close();
+            } catch (IOException e) {
+                System.err.println(e.getMessage());
+            }
+        } else {
+            //defaultfunction();
+            outPut.println("El usuario introducido es incorrecto.");
+        }
 
     }
 
@@ -42,7 +63,7 @@ public class HelloController {
            Stage stage=(Stage) registro.getScene().getWindow();
            stage.close();
        }catch (IOException e){
-           System.out.println(e.getMessage());
+           System.err.println(e.getMessage());
        }
 
 

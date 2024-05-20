@@ -1,5 +1,6 @@
 package com.app.javafxdatabaseconnection;
 
+import com.dependences.Database.DataBaseCreator;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +16,11 @@ public class HelloApplication extends Application {
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+
+        // Crear la base de datos.
+        DataBaseCreator.createDatabase();
+        // Crear la tabla usuarios.
+        DataBaseCreator.createTableUsers();
     }
 
     public static void main(String[] args) {

@@ -13,6 +13,6 @@
    <TextField fx:id="emailField" layoutX="41.0" layoutY="58.0" promptText="email" />
    <Label fx:id="welcomeText1" layoutX="39.0" layoutY="89.0" prefHeight="17.0" prefWidth="149.0" text="Introduzca su contraseña:" />
    <TextField fx:id="passwordField" layoutX="39.0" layoutY="118.0" promptText="contraseña" />
-   <Button layoutX="90.0" layoutY="159.0" mnemonicParsing="false" onAction="#singInController" text="Entrar" />
+   <Button fx:id="enterButton" layoutX="90.0" layoutY="159.0" mnemonicParsing="false" onAction="#singInController" text="Entrar" />
    <Button fx:id="registro" layoutX="76.0" layoutY="203.0" mnemonicParsing="false" onAction="#newAcountController" text="Registrarse" />
 </AnchorPane>
