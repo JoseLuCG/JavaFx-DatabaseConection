@@ -16,32 +16,8 @@ public class Functions {
     /**
      * Insert a user in database.
      */
-    public static void insertUser() {
+    public static void insertUser(String email, String password, String state, Rol rolType) {
         Usuario newUser;
-        String email, password, state;
-        Rol rolType = Rol.INVITADO; // ADMIN, INVITADO, USUARIO
-        int rolOption;
-
-        outPut.println("Introduzca el correo del nuevo usuario:");
-        email = sc.nextLine();
-        outPut.println("Introduzca la contraseña del nuevo usuario:");
-        password = sc.nextLine();
-        outPut.println("Introduzca el estado del usuario:");
-        state = sc.nextLine();
-        do {
-            outPut.println("Introduzca el rol del usuario:");
-            outPut.println("[1] - Administrador");
-            outPut.println("[2] - Usuario");
-            outPut.println("[3] - Invitado");
-            rolOption = sc.nextInt();
-            sc.nextLine();
-            switch (rolOption) {
-                case 1: rolType = Rol.ADMIN; break;
-                case 2: rolType = Rol.USUARIO; break;
-                case 3: rolType = Rol.INVITADO; break;
-                default: outPut.println("Seleccione una opción válida.");
-            }
-        } while (rolOption != 1 && rolOption != 2 && rolOption != 3);
 
         newUser = new Usuario(email,password,state,rolType);
         setUsuario(newUser);

@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static com.dependences.Tools.Functions.*;
+
 public class RegisterViewController implements Initializable {
     @FXML
     private Button registro;
@@ -35,12 +37,16 @@ public class RegisterViewController implements Initializable {
         String emailUser = emailField.getText();
         String passwordUser = passwordField.getText();
         String userState = stateField.getText();
+        Rol userRol = rolField.getValue();
 
-        System.out.println(emailUser);
-        System.out.println(passwordUser);
-        System.out.println(userState);
+        insertUser(emailUser,passwordUser,userState,userRol);
+
     }
 
     public void resetAction(ActionEvent actionEvent) {
+        emailField.setText("");
+        passwordField.setText("");
+        stateField.setText("");
+        rolField.setValue(Rol.INVITADO);
     }
 }
