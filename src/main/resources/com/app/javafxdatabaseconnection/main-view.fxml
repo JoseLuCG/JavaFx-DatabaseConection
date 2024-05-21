@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.javafxdatabaseconnection.MainController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.javafxdatabaseconnection.MainController">
    <children>
       <Label fx:id="labelId" layoutX="272.0" layoutY="163.0" text="Hello!" />
+      <TableView fx:id="usersTable" layoutY="426.0" prefHeight="427.0" prefWidth="1478.0">
+         <columns>
+            <TableColumn fx:id="emailField" prefWidth="112.0" text="Correo" />
+            <TableColumn fx:id="passwordField" prefWidth="133.0" text="Contraseña" />
+            <TableColumn fx:id="stateField" prefWidth="110.0" text="Estado" />
+            <TableColumn fx:id="rolField" prefWidth="172.0" text="Rol" />
+         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" />
+         </padding>
+      </TableView>
    </children>
 </AnchorPane>
