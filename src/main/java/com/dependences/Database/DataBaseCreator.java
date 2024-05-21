@@ -93,34 +93,4 @@ public class DataBaseCreator {
 
         } else outPut.println("La conexión ha fallado.");
     }
-
-    public static void showData () {
-        Statement mysqlSelect = null;
-        ResultSet mySqlResult = null;
-
-        if (connection()) {
-            try {
-                String sqlQuery = "SELECT * FROM usuarios";
-
-                mysqlSelect = conn.createStatement();
-                mySqlResult = mysqlSelect.executeQuery(sqlQuery);
-
-                System.out.println("================================================================");
-                outPut.printf("%15s %15s %15s %15s","Correo","Contraseña","Estado","Rol");
-                System.out.println();
-                System.out.println("================================================================");
-                while (mySqlResult.next()) {
-                    outPut.printf("%15s ",mySqlResult.getString(1));
-                    outPut.printf("%15s ",mySqlResult.getString("password"));
-                    outPut.printf("%15s ",mySqlResult.getString("estado"));
-                    outPut.printf("%15s ",mySqlResult.getString("rol"));
-                    outPut.println();
-                }
-                System.out.println("================================================================");
-                conn.close();
-            } catch (SQLException e) {
-                System.err.println(e.getMessage());
-            }
-        } else outPut.println("Error, la conexión ha fallado.");
-    }
 }
