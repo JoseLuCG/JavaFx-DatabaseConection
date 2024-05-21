@@ -1,5 +1,6 @@
 package com.app.javafxdatabaseconnection;
 
+import com.dependences.Tools.Views;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static com.dependences.Tools.Functions.*;
+import static com.dependences.Tools.Alerts.*;
 
 public class HelloController {
     @FXML
@@ -28,25 +30,16 @@ public class HelloController {
     private Label welcomeText;
 
     public void singInController(ActionEvent actionEvent) {
-        boolean userExists = true;
+        String userEmail = emailField.getText();
+        String password = passwordField.getText();
+        boolean userIsLogged = login(userEmail, password);
 
-        if (userExists) {
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("main-view.fxml"));
-                Parent mainRoot = fxmlLoader.load();
-                Stage mainStage = new Stage();
-                mainStage.setTitle("Ventana Principal");
-                mainStage.setScene(new Scene(mainRoot,400,400));
-                mainStage.show();
-
-                Stage stage = (Stage) enterButton.getScene().getWindow();
-                stage.close();
-            } catch (IOException e) {
-                System.err.println(e.getMessage());
-            }
+        if ( userIsLogged ) {
+            Views.mainView();
+            Stage stage = (Stage) enterButton.getScene().getWindow();
+            stage.close();
         } else {
-            //defaultfunction();
-            outPut.println("El usuario introducido es incorrecto.");
+            userNotFound();
         }
 
     }
