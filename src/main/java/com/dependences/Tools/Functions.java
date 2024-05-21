@@ -65,16 +65,13 @@ public class Functions {
         deleteUser(delUser);
     }
 
-    public static void login() {
-        String email, password;
+    public static boolean login(String email, String password) {
         Usuario logUser;
-
-        outPut.println("Introduzca el email:");
-        email = sc.nextLine();
-        outPut.println("Introduzca la contraseña:");
-        password = sc.nextLine();
+        boolean successfulLogin;
 
         logUser = new Usuario(email, password);
-        logSQL(logUser);
+        successfulLogin = logSQL(logUser);
+
+        return successfulLogin;
     }
 }
