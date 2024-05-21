@@ -109,7 +109,7 @@ public class DAOUsuarios {
         }
     }
 
-    public static ArrayList<Usuario> showData () {
+    public static ArrayList<Usuario> datareceiver () {
         ArrayList<Usuario> userList = new ArrayList<>();
         Statement mysqlSelect = null;
         ResultSet mySqlResult = null;
@@ -127,11 +127,14 @@ public class DAOUsuarios {
                 //System.out.println("================================================================");
                 while (mySqlResult.next()) {
                     Usuario user = new Usuario(
+                            //TODO MANAGE THE NULL FIELDS.
+
                             mySqlResult.getString(1),
                             mySqlResult.getString(2),
                             mySqlResult.getString(3),
                             Rol.valueOf(mySqlResult.getString(4))
                     );
+                    userList.add(user);
                     //outPut.printf("%15s ",mySqlResult.getString(1));
                     //outPut.printf("%15s ",mySqlResult.getString("password"));
                     //outPut.printf("%15s ",mySqlResult.getString("estado"));
@@ -145,5 +148,6 @@ public class DAOUsuarios {
                 System.err.println(e.getMessage());
             }
         } else outPut.println("Error, la conexión ha fallado.");
+        return userList;
     }
 }
