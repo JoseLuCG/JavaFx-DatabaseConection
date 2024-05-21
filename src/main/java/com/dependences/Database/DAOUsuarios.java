@@ -81,7 +81,7 @@ public class DAOUsuarios {
         } else outPut.println("La conexión ha fallado.");
     }
 
-    public static void logSQL (Usuario user) {
+    public static boolean logSQL (Usuario user) {
         PreparedStatement mySqlSelect = null;
         ResultSet mySqlResult = null;
 
@@ -93,10 +93,16 @@ public class DAOUsuarios {
                 mySqlSelect.setString(1,user.getEmail());
                 mySqlSelect.setString(2,user.getPassword());
                 mySqlResult = mySqlSelect.executeQuery();
-                conn.close();
+
+                if(mySqlResult.next()) return true;
+                else return false;
             } catch (SQLException e) {
                 System.err.println(e.getMessage());
+                return false;
             }
-        } else outPut.println("La conexión ha fallado.");
+        } else {
+            outPut.println("La conexión ha fallado.");
+            return false;
+        }
     }
 }
