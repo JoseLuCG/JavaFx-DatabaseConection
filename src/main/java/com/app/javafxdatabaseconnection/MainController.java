@@ -1,8 +1,13 @@
 package com.app.javafxdatabaseconnection;
 
+import static com.dependences.Database.DAOUsuarios.*;
+
+import com.dependences.Models.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+import java.util.ArrayList;
 
 public class MainController {
     @FXML
@@ -33,7 +38,11 @@ public class MainController {
     private Button loadUsersButton;
 
     public void loadData(ActionEvent actionEvent) {
-        System.out.println("works");
+        ArrayList<Usuario> users = datareceiver();
+
+        for (Usuario user: users) {
+            System.out.println(user.toString());
+        }
     }
 
     public void AddUser(ActionEvent actionEvent) {
