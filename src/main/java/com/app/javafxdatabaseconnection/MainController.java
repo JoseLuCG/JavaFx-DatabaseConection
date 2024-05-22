@@ -2,30 +2,34 @@ package com.app.javafxdatabaseconnection;
 
 import static com.dependences.Database.DAOUsuarios.*;
 
+import com.dependences.Models.Rol;
 import com.dependences.Models.Usuario;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.ArrayList;
 
 public class MainController {
     @FXML
-    private TableView usersTable;
+    private TableView<Usuario> usersTable;
     @FXML
-    private TableColumn tableEmailField;
+    public TableColumn<Usuario, String> tableEmailField;
     @FXML
-    private TableColumn tablePasswordField;
+    public TableColumn<Usuario, String> tablePasswordField;
     @FXML
-    private TableColumn tableStateField;
+    public TableColumn<Usuario, String> tableStateField;
     @FXML
-    private TableColumn tableRolField;
+    public TableColumn<Usuario, Rol> tableRolField;
     @FXML
-    private TextField emailField;
+    public TextField emailField;
     @FXML
-    private TextField passwordField;
+    public TextField passwordField;
     @FXML
-    private TextField stateField;
+    public TextField stateField;
     @FXML
     private ChoiceBox rolField;
     @FXML
@@ -37,12 +41,21 @@ public class MainController {
     @FXML
     private Button loadUsersButton;
 
-    public void loadData(ActionEvent actionEvent) {
-        ArrayList<Usuario> users = datareceiver();
+    ObservableList<Usuario> usuariosList = FXCollections.observableArrayList();
+    @FXML
+    public void initialize () {
+        // Configure table fields.
+        tableEmailField.setCellValueFactory(new PropertyValueFactory<>("Email"));
+        tablePasswordField.setCellValueFactory(new PropertyValueFactory<>("Password"));
+        tableStateField.setCellValueFactory(new PropertyValueFactory<>("State"));
+        tableRolField.setCellValueFactory(new PropertyValueFactory<>("Rol"));
+    }
 
-        for (Usuario user: users) {
-            System.out.println(user.toString());
-        }
+    public void loadData(ActionEvent actionEvent) {
+        ArrayList<Usuario> usuarios = datareceiver();
+
+        usuariosList.setAll(usuarios);
+        usersTable.setItems(usuariosList);
     }
 
     public void AddUser(ActionEvent actionEvent) {
