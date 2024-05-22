@@ -113,6 +113,7 @@ public class DAOUsuarios {
         ArrayList<Usuario> userList = new ArrayList<>();
         Statement mysqlSelect = null;
         ResultSet mySqlResult = null;
+        final String NULL_EXCEPTION = "NULL";
 
         if (connection()) {
             try {
@@ -126,14 +127,20 @@ public class DAOUsuarios {
                 //System.out.println();
                 //System.out.println("================================================================");
                 while (mySqlResult.next()) {
-                    Usuario user = new Usuario(
-                            //TODO MANAGE THE NULL FIELDS.
+                    String email = mySqlResult.getString(1);
+                    String password = mySqlResult.getString(2);
 
-                            mySqlResult.getString(1),
-                            mySqlResult.getString(2),
-                            mySqlResult.getString(3),
-                            Rol.valueOf(mySqlResult.getString(4))
-                    );
+                    String state = mySqlResult.getString(3);
+                    if (mySqlResult.wasNull()) {
+                        state = NULL_EXCEPTION;
+                    }
+
+                    Rol rol = Rol.valueOf(mySqlResult.getString(4));
+                    if (mySqlResult.wasNull()) {
+                        rol = Rol.INVITADO;
+                    }
+
+                    Usuario user = new Usuario(email, password, state, rol);
                     userList.add(user);
                     //outPut.printf("%15s ",mySqlResult.getString(1));
                     //outPut.printf("%15s ",mySqlResult.getString("password"));
