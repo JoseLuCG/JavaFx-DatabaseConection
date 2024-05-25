@@ -32,6 +32,8 @@ public class MainController {
     @FXML
     public TextField stateField;
     @FXML
+    private TextField newPasswordField;
+    @FXML
     private ChoiceBox<Rol> rolField = new ChoiceBox<>();
     @FXML
     private Button addUserButton;
@@ -71,7 +73,7 @@ public class MainController {
     public void updateUser(ActionEvent actionEvent) {
         String emailUser = emailField.getText();
         String passwordUser = passwordField.getText();
-        String newPassword = "paquita";
+        String newPassword = newPasswordField.getText();
 
         updatePassword(emailUser, passwordUser, newPassword);
     }
