@@ -26,7 +26,6 @@ public class RegisterViewController implements Initializable {
     private TextField stateField;
     @FXML
     private ChoiceBox<Rol> rolField = new ChoiceBox<>();
-    private String[] roles = {};
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
