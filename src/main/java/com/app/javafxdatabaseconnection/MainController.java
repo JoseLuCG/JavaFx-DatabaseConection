@@ -1,6 +1,7 @@
 package com.app.javafxdatabaseconnection;
 
 import static com.dependences.Database.DAOUsuarios.*;
+import static com.dependences.Tools.Functions.*;
 
 import com.dependences.Models.Rol;
 import com.dependences.Models.Usuario;
@@ -31,7 +32,7 @@ public class MainController {
     @FXML
     public TextField stateField;
     @FXML
-    private ChoiceBox rolField;
+    private ChoiceBox<Rol> rolField = new ChoiceBox<>();
     @FXML
     private Button addUserButton;
     @FXML
@@ -40,10 +41,10 @@ public class MainController {
     private Button deleteUSerButton;
     @FXML
     private Button loadUsersButton;
-
     ObservableList<Usuario> usuariosList = FXCollections.observableArrayList();
     @FXML
     public void initialize () {
+        rolField.getItems().addAll(Rol.values());
         // Configure table fields.
         tableEmailField.setCellValueFactory(new PropertyValueFactory<>("Email"));
         tablePasswordField.setCellValueFactory(new PropertyValueFactory<>("Password"));
@@ -59,9 +60,20 @@ public class MainController {
     }
 
     public void AddUser(ActionEvent actionEvent) {
+        String emailUser = emailField.getText();
+        String password = passwordField.getText();
+        String state = stateField.getText();
+        Rol rol = rolField.getValue();
+
+        insertUser(emailUser,password,state, rol);
     }
 
     public void updateUser(ActionEvent actionEvent) {
+        String emailUser = emailField.getText();
+        String passwordUser = passwordField.getText();
+        String newPassword = "paquita";
+
+        updatePassword(emailUser, passwordUser, newPassword);
     }
 
     public void deleteUser(ActionEvent actionEvent) {
