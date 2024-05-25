@@ -26,19 +26,10 @@ public class Functions {
     /**
      * Update the password for the selected user.
      */
-    public static void updatePassword(){
+    public static void updatePassword(String email, String password, String newPassword){
         Usuario newUser;
-        String email, password, newPassword;
-
-        outPut.println("Introduzca el email:");
-        email = sc.nextLine();
-        outPut.println("Introduzca la contraseña:");
-        password = sc.nextLine();
-        outPut.println("Escriba la nueva contraseña:");
-        newPassword = sc.nextLine();
 
         newUser = new Usuario(email, password);
-
         if (password.equals(newPassword)) {
             do {
                 outPut.println("La nueva contraseña no puede ser igual a la anterior.");
