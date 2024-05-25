@@ -43,14 +43,8 @@ public class Functions {
     /**
      * Deletes a user in the database.
      */
-    public static void delUser() {
-        String email, password;
+    public static void delUser(String email, String password) {
         Usuario delUser;
-
-        outPut.println("Indique el email del usuario a eliminar:");
-        email = sc.nextLine();
-        outPut.println("Indique la contraseña del usuario a eliminar:");
-        password = sc.nextLine();
 
         delUser = new Usuario(email, password);
         deleteUser(delUser);
