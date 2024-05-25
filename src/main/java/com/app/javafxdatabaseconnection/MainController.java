@@ -77,5 +77,9 @@ public class MainController {
     }
 
     public void deleteUser(ActionEvent actionEvent) {
+        String emailUser = emailField.getText();
+        String passwordUser = passwordField.getText();
+
+        delUser(emailUser, passwordUser);
     }
 }
